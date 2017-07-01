@@ -7,7 +7,7 @@ from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['GET'])
+@app.route('/', methods=['GET'])
 def verify():
   # when the endpoint is registered as a webhook, it must echo back
   # the 'hub.challenge' value it receives in the query arguments
@@ -18,7 +18,7 @@ def verify():
     return "Verification token mismatch", 403
   return "Hello world", 200
 
-@app.route('/webhook', methods=['POST'])
+@app.route('/', methods=['POST'])
 def webhook():
     log('inside webhook')
     # endpoint for processing incoming messaging events
