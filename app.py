@@ -28,32 +28,31 @@ def webhook():
 
     if data["object"] == "page":
         for entry in data["entry"]:
-            log(entry)
-            for messaging_event in entry["messaging"]:
+          for messaging_event in entry["messaging"]:
 
-                if messaging_event.get("message"):  # someone sent us a message
+              if messaging_event.get("message"):  # someone sent us a message
 
-                    sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
-                    recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
-                    message_text = messaging_event["message"]["text"]  # the message's text
+                  sender_id = messaging_event["sender"]["id"]        # the facebook ID of the person sending you the message
+                  recipient_id = messaging_event["recipient"]["id"]  # the recipient's ID, which should be your page's facebook ID
+                  message_text = messaging_event["message"]["text"]  # the message's text
 
-                    if message_text in 'Привіт':
-                      send_message(sender_id, "Вітаю!")
-                      send_message(sender_id, "Що цікавить? Вкажіть цифру.")
-                      send_message(sender_id, "1)Записатись на масаж.")
-                      send_message(sender_id, "2)Найближча вільна дата.")
-                      send_message(sender_id, "3)Інформація про типи масажів.")
-                    # else:
-                    #   send_message(sender_id, "Вітаю!")
+                  if message_text in 'Привіт':
+                    send_message(sender_id, "Вітаю!")
+                    send_message(sender_id, "Що цікавить? Вкажіть цифру.")
+                    send_message(sender_id, "1)Записатись на масаж.")
+                    send_message(sender_id, "2)Найближча вільна дата.")
+                    send_message(sender_id, "3)Інформація про типи масажів.")
+                  # else:
+                  #   send_message(sender_id, "Вітаю!")
 
-                if messaging_event.get("delivery"):  # delivery confirmation
-                    pass
+              if messaging_event.get("delivery"):  # delivery confirmation
+                  pass
 
-                if messaging_event.get("optin"):  # optin confirmation
-                    pass
+              if messaging_event.get("optin"):  # optin confirmation
+                  pass
 
-                if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
-                    pass
+              if messaging_event.get("postback"):  # user clicked/tapped "postback" button in earlier message
+                  pass
 
     return "ok", 200
 
@@ -83,7 +82,7 @@ def send_message(recipient_id, message_text):
 
 
 def log(message):  # simple wrapper for logging to stdout on heroku
-    print str(message)
+    print(str(message))
     sys.stdout.flush()
 
 
