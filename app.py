@@ -83,4 +83,5 @@ def log(message):  # simple wrapper for logging to stdout on heroku
 
 
 if __name__ == '__main__':
+    log('------------------test log')
     app.run(debug=True)
